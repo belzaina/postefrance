@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/belzaina/laposte.svg?branch=master)](https://travis-ci.com/belzaina/postefrance)
+[![Build Status](https://travis-ci.com/belzaina/postefrance.svg?branch=master)](https://travis-ci.com/belzaina/postefrance)
 
 Motivations
 ===========

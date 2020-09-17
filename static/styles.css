@@ -1,0 +1,104 @@
+* { 
+    font-family: sans-serif; 
+    margin: 0; 
+}
+
+.main_page_header {
+    text-align: center;
+    padding: 2em; 
+    font-size: 1.5em;
+    background-color: #374785; 
+    color: white;
+}
+
+.main_title {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.main {
+    padding: 2em 2em 2em 3em;
+}
+
+.header { 
+    padding: 2em; 
+    font-size: 1.5em; 
+    background-color: #374785; 
+    color: white;
+}
+
+.accueil {  
+    color: white;
+    font-size: 0.8em;
+}
+
+.form_group {
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.input_field {
+    width: 50%;
+    border: 1.2px solid #ccc;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 1em;
+}
+
+input, label {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type=submit] {
+    padding: 16px 32px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px 15px 15px 0px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+span {
+    float: left;
+    width: 400px;
+}
+
+p {
+    padding-bottom: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

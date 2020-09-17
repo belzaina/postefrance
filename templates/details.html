@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href={{ url_for('static', filename='styles.css')}}>
+        <title>Bureau de Poste - {{ info['Libellé_du_site'] }}</title>
+    </head>
+    <body>
+        <div class="header">
+            <a class="accueil" href={{ url_for('index') }}>Accueil</a><br><br>
+            <h2>Informations Concernant le Bureau de Poste « {{ info['Libellé_du_site'] }} »</h2>
+        </div>
+        <div class="main">
+            <u><h3>1. INFORMATIONS GENERALES</h3></u><br>
+            <p><span><b>Identifiant</b></span>: {{ info['Identifiant_du_site'] }}</p>
+            <p><span><b>Libellé</b></span>: {{ info['Libellé_du_site'] }}</p>
+            <p><span><b>Type</b></span>: {{ info['Caractéristique_du_site'] }}</p>
+            <p><span><b>Code INSEE</b></span>: {{ info['Code_INSEE'] }}</p>
+            
+            <br><br>
+            <u><h3>2. LOCALISATION</h3></u><br>
+            <p><span><b>Adresse</b></span>: {{ info['Adresse'] }}</p>
+            <p><span><b>Code postal</b></span>: {{ info['Code_postal'] }}</p>
+            <p><span><b>Localité</b></span>: {{ info['Localité'] }}</p>
+            <p><span><b>Position (Latitude, Longitude)</b></span>: {{ info['Latitude'] }}, {{ info['Longitude'] }} (<a href=http://maps.google.com/maps?q={{ info['Latitude'] }},{{ info['Longitude'] }} target="_blank">Afficher dans Google Maps</a>)</p>
+            
+            <br><br>
+            <u><h3>3. SERVICES DISPONIBLES</h3></u><br>
+            <p><span><b>Changeur de monnaie</b></span>: {{ info['Changeur_de_monnaie'] }}</p>
+            <p><span><b>Distributeur de billets</b></span>: {{ info['Distributeur_de_billets'] }}</p>
+            <p><span><b>Distributeur de timbres</b></span>: {{ info['Distributeur_de_timbres'] }}</p>
+            <p><span><b>Distributeur Prêt à Poster</b></span>: {{ info['Distributeur_Prêt_à_Poster'] }}</p>
+            <p><span><b>Libre Service</b></span>: {{ info['Affranchissement_Libre_Service'] }}</p>
+
+            <br><br>
+            <u><h3>4. SERVICES PROPOSES AUX PERSONNES A MOBILITE REDUITE</h3></u><br>
+            <p><span><b>Entrée autonome en fauteuil roulant possible</b></span>: {{ info['Accessibilité_Entrée_autonome_en_fauteuil_roulant_possible'] }}</p>
+            <p><span><b>Espace de circulation intérieur suffisant pour PMR</b></span>: {{ info['Accessibilité_Espace_de_circulation_intérieur_suffisant_pour_PMR'] }}</p>
+            <p><span><b>Présence d'un espace confidentiel accessible PMR</b></span>: {{ info['Accessibilité_Présence_d_un_espace_confidentiel_accessible_PMR'] }}</p>
+            <p><span><b>Présence d'un GAB externe accessible PMR</b></span>: {{ info['Accessibilité_Présence_d_un_GAB_externe_accessible_PMR'] }}</p>
+            <p><span><b>Présence d'un guichet surbaissé ou d'un écritoire</b></span>: {{ info['Accessibilité_Présence_d_un_guichet_surbaissé_ou_d_un_écritoire'] }}</p>
+            <p><span><b>Présence d'une bande de guidage au sol</b></span>: {{ info['Accessibilité_Présence_d_une_bande_de_guidage_au_sol'] }}</p>
+            
+            <br><br>
+            <u><h3>5. CALENDRIER D'OUVERTURE DANS LES 15 PROCHAINS JOURS</h3></u><br>
+            {% if days |count == 0 %}	  
+            <p>Désolé ! Calendrier non disponible pour ce bureau de poste.</p>
+            {% else %}  
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Horaire matin</th>
+                    <th>Horaire après-midi</th>
+                    <th>Heure limite dépôt courrier</th>
+                    <th>Heure limite dépôt chrono</th>
+                    <th>Heure limite dépôt colis</th>
+                </tr>
+                {% for day in days %}
+                <tr>
+                    <td>{{ day['Date_calendrier'] }}</td>
+                    <td>{{ day['Plage_horaire_1'] }}</td>
+                    <td>{{ day['Plage_horaire_2'] }}</td>
+                    <td>{{ day['Heure_limite_dépôt_Courrier'] }}</td>
+                    <td>{{ day['Heure_limite_dépôt_Chrono'] }}</td>
+                    <td>{{ day['Heure_limite_dépôt_Colis'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>    
+    </body>
+</html>

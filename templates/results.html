@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href={{ url_for('static', filename='styles.css')}}>
+        <title>Résultats de Recherche</title>
+    </head>
+    <body>
+        <div class="header">
+            <a class="accueil" href={{ url_for('index') }}>Accueil</a><br><br>
+            <h2>Vous avez recherché « {{ nom_ville }} »</h2>
+        </div>
+        <div class="main">
+            {{ message }}<br><br>
+            {% if bureaux_disponibles is not none %}
+            <table>
+                <tr>
+                    <th>Identifiant du site</th>
+                    <th>Adresse</th>
+                    <th>Lien pour plus d'information</th>
+                </tr>
+                {% for bureau in bureaux_disponibles %}
+                <tr>
+                    <td>{{ bureau['Identifiant_du_site'] }}</td>
+                    <td>{{ bureau['Adresse'] }}</td>
+                    <td><a href={{ url_for('show_details', identifiant_du_site=bureau['Identifiant_du_site']) }}>Afficher plus d'information</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% elif nom_ville == '' %}
+            <p>Vous pouvez vérifier <i><b>la liste des localités disponibles</i></b> en suivant ce <a href={{ url_for('show_cities') }}>LIEN</a><p>
+            {% else %}
+            <p>Vérifiez <i><b>l'orthographe</i></b> ou bien cocher l'option <i><b>"Rechercher des résultats approchés"</b></i> afin d'afficher des suggestions de villes similaires à votre recherche.</p>
+            <p>Vous pouvez également vérifier <i><b>la liste des localités disponibles</i></b> en suivant ce <a href={{ url_for('show_cities') }}>LIEN</a><p>
+            {% endif %}
+        </div>    
+    </body>
+</html>

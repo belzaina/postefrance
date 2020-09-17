@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href={{ url_for('static', filename='styles.css')}}>
+        <title>Résultats de Recherche</title>
+    </head>
+    <body>
+        <div class="header">
+            <a class="accueil" href={{ url_for('index') }}>Accueil</a><br><br>
+            <h2>Vous avez recherché « {{ nom_ville }} »</h2>
+        </div>
+        <div class="main">
+            {{ message }}<br><br>
+            {% if suggestions_count > 0 %}
+            <table>
+                <tr>
+                    <th>Suggestion</th>
+                    <th>Score de Levenshtein</th>
+                    <th>Bureaux de Poste Disponibles</th>
+                </tr>
+                {% for ville in suggestions_villes %}
+                <tr>
+                <td>{{ ville['Localité'] }}</td>
+                <td>{{ ville['Levenshtein_Score'] }}</td>
+                <td><a href={{ url_for('display_search_results', nom_ville=ville['Localité']) }}>Afficher la liste</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>Vérifiez <i><b>l'orthographe</i></b> des termes de recherche.</p>
+            <p>Vous pouvez également vérifier <i><b>la liste des localités disponibles</i></b> en suivant ce <a href={{ url_for('show_cities') }}>LIEN</a></p>
+            {% endif %}
+        </div>    
+    </body>
+</html>

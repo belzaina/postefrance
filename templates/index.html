@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href={{ url_for('static', filename='styles.css')}}>
+		<title>Annuaire Bureaux de Poste</title>
+	</head>
+	<body>
+		<a href="https://github.com/belzaina/laposte"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:100;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+		<div class="main_page_header">
+			<h1 class="main_title">Réseau Postal Français</h1><br>
+			<h2 class="main_title">Localisation, Horaires, Equipements et Services</h2>
+		</div>
+		<div class="form_group">
+			<form action="/search" method="get">
+				<input id="name" class="input_field" name="nom_ville" placeholder="Entrez le nom de la ville" autocomplete="off" autofocus/><br><br>
+				<input type="checkbox" id="resultats_approches" name="resultats_approches" value="true">
+				<label for="resultats_approches">Rechercher des résultats approchés ?</label><br><br>
+				<input type="submit" value="Rechercher">
+			</form>
+		</div>    
+	</body>
+</html>

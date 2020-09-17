@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href={{ url_for('static', filename='styles.css')}}>
+        <title>Liste de Localités</title>
+    </head>
+    <body>
+        <div class="header">
+            <a class="accueil" href={{ url_for('index') }}>Accueil</a><br><br>
+            <h2>LISTE DE LOCALITES</h2>
+        </div>
+        <div class="main">
+            <p>Cette version de l'application couvre un échantillon de {{ number_of_cities }} localités.</p>
+            <p>Ci-dessous les 100 premiers localités classées par le nombre des bureaux de poste disponibles :</p>
+            <br>
+            <table>
+                <tr>
+                    <th>Localité</th>
+                    <th>Nombre de bureaux de Poste</th>
+                    <th>Bureaux de Poste Disponibles</th>
+                </tr>
+                {% for city in top_n %}
+                <tr>
+                <td>{{ city[0] }}</td>
+                <td>{{ city[1] }}</td>
+                <td><a href={{ url_for('display_search_results', nom_ville=city[0]) }}>Afficher la liste</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>    
+    </body>
+</html>

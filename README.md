@@ -7,7 +7,7 @@ L’objectif est de développer une application Flask permettant la recherche et
 
 Lien
 ===========
-(https://postefrance.herokuapp.com/)
+https://postefrance.herokuapp.com/
   
 Points Importants
 ==================
